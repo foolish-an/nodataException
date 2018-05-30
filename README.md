@@ -24,3 +24,17 @@ ignoredScrollViewContentInsetTop    设置占位图的偏移量
 - (CGRect)explainRectForContentRect:(CGRect)contentRect;
 /***  子类实现更改默认文字布局  **/
 - (CGRect)imageRectForContentRect:(CGRect)contentRect;
+
+
+/*@!
+在不同状态完成后设置此视图的mode值可以自动更改占位图状态
+<包括网络加载失败,网络错误等,网络加载成功但是无数据状态已经处理不需要设置>
+**/
+@property (nonatomic, strong) __kindof ALExceptionView *al_exceptionView;
+
+/***  某个视图需要占位图,直接调用该方法,就可完成默认配置  **/
+- (ALExceptionView *)al_insertExceptionView;
+/***  默认设置情况网络错误调用  **/
+- (void)al_networkError;
+/***  正常获取数据,不是列表视图方便调用  **/
+- (void)al_quiteNormal;
